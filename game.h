@@ -8,7 +8,7 @@ class Game
     std::list <Game> gamer;
 
     public:
-    void creat_list_gamers(std::list <Game> gamer);
+    void all_gamers(std::list <Game> gamer);
     
 
 
