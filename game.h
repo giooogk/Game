@@ -14,8 +14,7 @@ class Game
     public:
     void all_gamers(Player nickname);
     void set_gamer();
-    
-
+    void roud(std::list <Player> gamer);
 
 };
 
