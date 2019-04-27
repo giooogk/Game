@@ -11,7 +11,7 @@ class Player
     public:
     int score(int points_time);
     int get_points();
-    int set_points(int points_time);
+    void set_points(int points_time);
 };
 
 #endif
