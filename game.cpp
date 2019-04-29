@@ -7,21 +7,32 @@
 
 using namespace std;
 
-void Game::set_gamer()
+void Game::set_player(Player player)
 {
-    this->gamer;
+    this->gamer.push_back(player);
 }
 
-void Game::all_gamers(Player nickname)
+list<Player>  Game::all_gamers()
 {
-    gamer.push_back(nickname);
+    return this->gamer;
 }
 
 void Game::roud(list <Player> gamer){
     list <Player> :: iterator it;
     it = gamer.begin();
     
-    for(it; it != gamer.end(); ++it){
+    for(it; it != gamer.end(); ++it)
+    {
         //passar em jogador em jogardor e perguntar o que quer fazer e se joga os dados ou para 
     }
+}
+
+int Game::get_target()
+{
+    return this->target;
+}
+    
+void Game::set_target(int target)
+{
+    this->target = target;
 }

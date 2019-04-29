@@ -9,12 +9,16 @@ class Game
 {
     private:
     std::list <Player> gamer;
+    int target;
 
 
     public:
-    void all_gamers(Player nickname);
-    void set_gamer();
+    list<Player> all_gamers();
+    void set_player(Player nickname);
     void roud(std::list <Player> gamer);
+
+    int get_target();
+    void set_target(int target);
 
 };
 
