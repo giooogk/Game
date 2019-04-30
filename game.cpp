@@ -22,7 +22,18 @@ void Game::roud(list <Player> gamer){
     it = gamer.begin();
     
     for(it; it != gamer.end(); ++it)
-    {
+    {       
+        
+        //se o jogador estourar ele sai
+        if(it->get_points() > this->target)
+        {
+            gamer.remove(*it);
+        }
+        else
+        {
+            
+        }
+
         //passar em jogador em jogardor e perguntar o que quer fazer e se joga os dados ou para 
     }
 }
