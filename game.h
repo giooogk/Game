@@ -13,12 +13,13 @@ class Game
 
 
     public:
-    list<Player> all_gamers();
-    int jogar_dado();
-    void set_player(Player nickname);
     void roud(std::list <Player> gamer);
-
+    int action(std::list <Player> gamer);
+    void regras(std::list <Player> gamer);
+    std::list<Player> all_gamers();
+    
     int get_target();
+    void set_player(Player nickname);
     void set_target(int target);
 
 };
