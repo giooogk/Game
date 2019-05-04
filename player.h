@@ -2,14 +2,16 @@
 #define player_H
 #include <string>
 
+using namespace std;
+
 class Player
 {
     private:
-    std::string nickname;
+    string nickname;
     int points;
 
     public:
-    int score(int points_time);
+    
     int get_points();
     void set_points(int points_time);
 };

@@ -1,26 +1,30 @@
 #ifndef game_H
 #define game_H
-#include <list>
+
+#include <vector>
 #include <string>
 #include "player.h"
+#include "dado.h"
 
+using namespace std;
 
 class Game
 {
     private:
-    std::list <Player> gamer;
+    vector<Player> gamers; 
+    vector<Player> final_gamers; 
     int target;
 
 
     public:
-    void roud(std::list <Player> gamer);
-    int action(std::list <Player> gamer);
-    void regras(std::list <Player> gamer);
-    std::list<Player> all_gamers();
-    
+    int add_player(Player jo);
+    int action(vector<Player> gamer);
+ 
+    vector<Player> get_gamer();
+    vector<Player> get_final_gamers();
     int get_target();
-    void set_player(Player nickname);
     void set_target(int target);
+    void set_player(Player nickname);
 
 };
 

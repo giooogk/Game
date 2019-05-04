@@ -1,67 +1,70 @@
 #include <iostream>
-#include <list>
+#include <vector>
 #include <string>
-#include <iterator>
 #include <cstdlib>
+
 #include "player.h"
 #include "game.h"
 #include "dado.h"
 
 using namespace std;
 
-int Game::action(list <Player> gamer)
+int Game::add_player(Player jo)
 {
-    //objetivo de percorrer todos os jogadores e dar a opção de rodar os dados ou parar
-    //enquanto tiver jogadores
-    list <Player> :: iterator it;
-    it = gamer.begin();
-    while(it != gamer.end())
-    {
-        int resposta = 0;
-        cin >> resposta;
-        if (resposta == 1)
-        {
-           //rodar o dado 
-        }
-        else if (resposta ==2)
-        {
-            //parar
-        }
-        else
-        {
-            cout << "ERRO 404" << endl; 
-        }
-        
-    }
-    
-    
+    gamers.push_back(jo);
 
-    return;
+    return 0;
 }
 
-void Game::regras(list <Player> gamer)
+int Game::action(vector <Player> gamer)
 {
-    list <Player> :: iterator it;
+    vector <Player> :: iterator it;
     it = gamer.begin();
+    string action = 0;
     
-    for(it; it != gamer.end(); ++it)
-    {   
-        //se o jogador parar ele nao jogar mais    
-        if (/*se o joador na sua vez de fazer uma ação parar ele não joga mais*/)
+    for(it; it != gamer.end(); it++)
+    {
+        if(it->get_points < target)
         {
-            //iginorar o jogador/pular a vez dele
-        }
-        //se o jogador estourar ele sai
-        else if(it->get_points() > this->target)
-        {
-            gamer.remove(*it);
+            cout << "Digite sua ação" << endl;
+            cout << "1- para rodar os dados" << endl;
+            cout << "2- para parar" << endl;
+            
+            cin.ignore();
+            getline(cin, action);
+
+            if(action == "1")
+            {
+                //joga o dado
+            }
+            else if(action == "2")
+            {
+                //jogador removido da lista de gamers
+                //jogador é adicionado na lista de final
+            }
+            else
+            {
+                cout << "Erro!!! Operação invalida" << endl;
+            }
+            
         }
         else
         {
-            //continua jogando o dado até todo mundo parar ou so restar um que nao estourou
-        }
- 
+            //jogador eliminado do jogo
+        }        
     }
+    
+    return 0;
+}
+
+vector<Player> Game::get_gamer()
+{
+    return this->gamers;
+}
+
+vector<Player> Game::get_final_gamers()
+{
+    return this->final_gamers;
 }
 
 int Game::get_target()
@@ -76,10 +79,5 @@ void Game::set_target(int target)
 
 void Game::set_player(Player player)
 {
-    this->gamer.push_back(player);
-}
-
-list<Player>  Game::all_gamers()
-{
-    return this->gamer;
+    this->gamers.push_back(player);
 }

@@ -4,11 +4,12 @@
 
 class Dado
 {
-private:
-int sort;
+    private:
+    int sort;
 
-public:
+    public:
     int get_sort();    
+
 };
 
 #endif
