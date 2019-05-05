@@ -11,13 +11,13 @@ class Jogador{
     private:
     string pessoa;
     int pontos;
-    int dado;
 
     public:
-    string set_pessoa(string pessoa);
-    void set_pontos(int ponto_atu);
+    void set_pessoa(string pessoa);
+    void set_pontos(int p);
+    string get_pessoa();
     int get_pontos();
-    int get_dado();
+
 };
 
 #endif

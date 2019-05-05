@@ -14,7 +14,8 @@ class Jogo{
     
     public:
     int adc_jogad_no_jogo(Jogador pessoa);
-    void acao_jogador(vector<Jogador> gamers);
+    void add_gamers_final(Jogador pessoa);
+    void remove_jogador(vector<Jogador>::iterator it);
     
     vector<Jogador> get_gamers();
     vector<Jogador> get_gamers_final();

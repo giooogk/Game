@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <list>
 #include <vector>
 #include <cstdlib>
 
@@ -17,43 +16,14 @@ int Jogo::adc_jogad_no_jogo(Jogador pessoa)
     return 0;
 }
 
+void Jogo::add_gamers_final(Jogador pessoa)
+{   
+    gamers_final.push_back(pessoa);
+}
 
-void Jogo::acao_jogador(vector<Jogador> pessoas)
+void Jogo::remove_jogador(vector<Jogador>::iterator it)
 {
-    vector<Jogador> :: iterator it;
-    it = gamers.begin();
-    string acao = 0;
-    int x;
-    for(it; it != gamers.end(); it++)
-    {
-        if(it->get_pontos < num_jogo)
-        {
-            cout << "Digite sua ação" << endl;
-            cout << "1- para rodar os dados" << endl;
-            cout << "2- para parar" << endl;
-            
-            cin.ignore();
-            getline(cin, acao);
-
-            if(acao == "1")
-            {
-              it->get_dado();
-
-            }
-            else if (acao == "2")
-            {
-                gamers_final.push_back(*it);
-                gamers.erase(it);
-                
-            }
-        }
-        else
-        {
-            gamers.erase(it);
-        }
-        
-    }
-
+    this->gamers.erase(it);
 }
 
 vector<Jogador> Jogo::get_gamers()

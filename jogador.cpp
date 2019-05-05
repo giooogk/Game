@@ -1,24 +1,23 @@
 #include <iostream>
 #include <string>
-#include <cstdlib>
 #include "jogador.h"
 
 
-string Jogador::set_pessoa(string jo)
+void Jogador::set_pessoa(string jogador)
 {
-    this->pessoa = jo;
+    this->pessoa = jogador;
+}
+string Jogador::get_pessoa()
+{
+    return this->pessoa;
 }
 
-void Jogador::set_pontos(int ponto_atu)
+void Jogador::set_pontos( int p)
 {
-   this->pontos = ponto_atu;
+   this->pontos = p;
 }
 
 int Jogador::get_pontos()
 {
     return this->pontos;
-}
-
-int Jogador::get_dado(){
-    return 1 +(rand()%6);
 }
