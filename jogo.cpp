@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <vector>
+#include <map>
 #include <cstdlib>
 
 #include "jogo.h"
@@ -21,17 +21,17 @@ void Jogo::add_gamers_final(Jogador pessoa)
     gamers_final.push_back(pessoa);
 }
 
-void Jogo::remove_jogador(vector<Jogador>::iterator it)
+void Jogo::remove_jogador(Jogador jogador)
 {
-    this->gamers.erase(it);
+    this->gamers.erase(jogador.get_pessoa());
 }
 
-vector<Jogador> Jogo::get_gamers()
+map<string,Jogador> Jogo::get_gamers()
 {
     return this->gamers;
 }
 
-vector<Jogador> Jogo::get_gamers_final()
+map<string,Jogador> Jogo::get_gamers_final()
 {
     return this->gamers_final;
 }

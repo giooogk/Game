@@ -19,14 +19,14 @@ void game(Jogo jogo)
     int win = 3;
     int dado1 = 0;
     int dado2 = 0;
-    Jogador J;
+    Jogador *J = new Jogador();
 
     while (win == 3)
     {
       
-        for (int i = 0; i < jogo.get_gamers().size(); i++)
+        for (auto jj: jogo.get_gamers())
         {
-            cout << jogo.get_gamers()[i].get_pessoa() << " - Pontos: " << jogo.get_gamers()[i].get_pontos() << endl;
+            cout << jj.second.get_pessoa() << " - Pontos: " << jj.second.get_pontos() << endl;
             cout << "Digite sua acao" << endl;
             cout << "1- para rodar os dados" << endl;
             cout << "2- para parar" << endl;
@@ -42,13 +42,13 @@ void game(Jogo jogo)
                 cout << dado1; 
                 cout << dado2; 
 
-                if (jogo.get_gamers()[i].get_pontos() > jogo.get_num_jogo())
+                if (jj.second.get_pontos() > jogo.get_num_jogo())
                 {
                     cout << "Jogador Eliminado!";
-                    jogo.remove_jogador(jogo.get_gamers()[i]);
+                    jogo.remove_jogador(jj.second);
                 }
 
-                if (jogo.get_gamers()[i].get_pontos() == jogo.get_num_jogo())
+                if (jj.second.get_pontos() == jogo.get_num_jogo())
                 {
                     cout << "Jogador Ganhou!";
                     win = 5;
@@ -60,8 +60,8 @@ void game(Jogo jogo)
 
             if(aux_jogo == 2)
             {
-                jogo.add_gamers_final(jogo.get_gamers()[i]);
-                jogo.remove_jogador(jogo.get_gamers()[i]);
+                jogo.add_gamers_final(jj.second);
+                jogo.remove_jogador(jj.second);
             }
 
         }
@@ -73,17 +73,17 @@ void game(Jogo jogo)
 
         if (jogo.get_gamers().size() == 0)
         {
-            J.set_pontos(0);
-            for (int k = 0; k < jogo.get_gamers_final().size(); k++)
+            J->set_pontos(0);
+            for (auto jj: jogo.get_gamers_final())
             {
-                if (jogo.get_gamers_final()[k].get_pontos() >= J.get_pontos())
+                if (jj.second.get_pontos() >= J->get_pontos())
                 {
-                    J = jogo.get_gamers_final()[k];
+                    *J = jj.second;
                 }
                 
             }
 
-            cout << "Jogador Campeão da partida foi " << J.get_pessoa() << endl;
+            cout << "Jogador Campeão da partida foi " << J->get_pessoa() << endl;
             
         }
         
@@ -96,7 +96,7 @@ int main(int argc, char const *argv[])
     int aux_2 = 0;
     srand((unsigned int)NULL);
     Jogo jogo;
-    Jogador cara;
+    Jogador *cara = new Jogador();
 
     int op = 0;
     string aux = "";
@@ -115,9 +115,9 @@ int main(int argc, char const *argv[])
             cout << "Digite o nome do jogador:" << endl;
             cin.ignore();
             getline(cin, aux);
-            cara.set_pessoa(aux);
-            cara.set_pontos(0);
-            jogo.adc_jogad_no_jogo(cara);
+            cara->set_pessoa(aux);
+            cara->set_pontos(0);
+            jogo.adc_jogad_no_jogo(*cara);
 
             break;
 
