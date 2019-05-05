@@ -41,6 +41,7 @@ int Jogo::get_num_jogo()
     return this->num_jogo;
 }
 
+
 void Jogo::set_num_jogo(int num_jogo)
 {
     this->num_jogo = num_jogo;
