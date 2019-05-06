@@ -17,8 +17,8 @@ class Jogo{
     void add_gamers_final(Jogador pessoa);
     void remove_jogador(Jogador jogador);
     
-    map<string,Jogador> get_gamers();
-    map<string,Jogador> get_gamers_final();
+    map<string,Jogador>& get_gamers();
+    map<string,Jogador>& get_gamers_final();
     int get_num_jogo();
     void set_num_jogo(int num_jogo);
 };

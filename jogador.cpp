@@ -2,7 +2,6 @@
 #include <string>
 #include "jogador.h"
 
-
 void Jogador::set_pessoa(string jogador)
 {
     this->pessoa = jogador;
@@ -14,7 +13,7 @@ string Jogador::get_pessoa()
 
 void Jogador::set_pontos( int p)
 {
-   this->pontos = p;
+   this->pontos += p;
 }
 
 int Jogador::get_pontos()

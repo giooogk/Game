@@ -5,20 +5,19 @@
 
 #include "jogo.h"
 #include "jogador.h"
-//#include "dado.h"
 
 using namespace std;
 
 int Jogo::adc_jogad_no_jogo(Jogador pessoa)
 {   
-    gamers.push_back(pessoa);
+    gamers.insert(pair<string, Jogador>(pessoa.get_pessoa(), pessoa));
 
     return 0;
 }
 
 void Jogo::add_gamers_final(Jogador pessoa)
 {   
-    gamers_final.push_back(pessoa);
+    gamers_final.insert(pair<string, Jogador>(pessoa.get_pessoa(), pessoa));
 }
 
 void Jogo::remove_jogador(Jogador jogador)
@@ -26,12 +25,12 @@ void Jogo::remove_jogador(Jogador jogador)
     this->gamers.erase(jogador.get_pessoa());
 }
 
-map<string,Jogador> Jogo::get_gamers()
+map<string,Jogador>& Jogo::get_gamers()
 {
     return this->gamers;
 }
 
-map<string,Jogador> Jogo::get_gamers_final()
+map<string,Jogador>& Jogo::get_gamers_final()
 {
     return this->gamers_final;
 }
