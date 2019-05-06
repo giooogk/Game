@@ -17,6 +17,8 @@ class Jogador{
     void set_pontos(int p);
     string get_pessoa();
     int get_pontos();
+    Jogador(string nome, int pontos);
+    Jogador();
 
 };
 

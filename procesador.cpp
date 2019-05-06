@@ -154,7 +154,9 @@ int main(int argc, char const *argv[])
                 cin >> aux_2;
                 system("CLS");
                 jogo.set_num_jogo(aux_2);
+
                 endGame = game(jogo);
+                
             }
             else
             {

@@ -20,3 +20,13 @@ int Jogador::get_pontos()
 {
     return this->pontos;
 }
+
+Jogador::Jogador(string nome, int pontos)
+{
+    this->pontos = pontos;
+    this->pessoa = nome;
+}
+Jogador::Jogador()
+{
+    
+}
