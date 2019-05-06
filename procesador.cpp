@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <ctime>
 #include <vector>
 #include "jogador.h"
 #include "jogo.h"
@@ -31,9 +32,8 @@ int game(Jogo jogo)
             it_temp = it;
             it_temp++;
 
-            cout << jogo.get_gamers().size() << endl;
-            cout << it->second.get_pessoa() << " - Pontos: " << it->second.get_pontos() << endl;
-            cout << "Digite sua acao" << endl;
+            cout << "Jogador: " << it->second.get_pessoa() << " - Pontos: " << it->second.get_pontos() << " - Alvo: " << jogo.get_num_jogo() <<endl;
+            cout << "-------------Digite sua acao-------------" << endl;
             cout << "1- para rodar os dados" << endl;
             cout << "2- para parar" << endl;
 
@@ -53,17 +53,17 @@ int game(Jogo jogo)
 
                 if (it->second.get_pontos() > jogo.get_num_jogo())
                 {
-                    cout << "Jogador Eliminado!" << endl;
+                    cout << "Jogador "<< it->second.get_pessoa() <<" Eliminado!" << endl;
                     jogo.remove_jogador(it->second);
-                    cin.get();
+                    
                 }
 
                 if (it->second.get_pontos() == jogo.get_num_jogo())
                 {
-                    cout << "Jogador Ganhou!" << endl;
+                    cout << "Jogador "<< it->second.get_pessoa() <<" Ganhou! por chegar ao numero exato" << endl;
                     win = 5;
                     break;
-                    cin.get();
+                    
                 }
 
             }
@@ -81,7 +81,7 @@ int game(Jogo jogo)
         if (jogo.get_gamers().size() == 1 && it_temp->second.get_pontos() <= jogo.get_num_jogo())
         {
             system("CLS");
-            cout << "Jogador Ganhou a partida!" << endl;
+            cout << "Jogador "<< it_temp->second.get_pessoa() <<" Ganhou a partida!" << endl;
             win = 5;
         }
 
@@ -97,7 +97,16 @@ int game(Jogo jogo)
             }
             win = 5;
             system("CLS");
-            cout << "Jogador Campeao da partida foi: " << J->get_pessoa() << endl;
+
+            if (J->get_pessoa().empty())
+            {
+                cout << "Jogo sem vencedores!" << endl;
+            }
+            else
+            {
+                cout << "Jogador Campeao da partida foi: " << J->get_pessoa() << endl;
+            }
+            
             
         }
         
@@ -111,7 +120,7 @@ int main(int argc, char const *argv[])
 {
     int aux_2 = 0;
     int endGame = 1;
-    srand((unsigned int)0);
+    srand((unsigned int)time(0));
     Jogo jogo;
     Jogador *cara = new Jogador();
 
@@ -120,6 +129,7 @@ int main(int argc, char const *argv[])
 
     while (endGame == 1)
     {
+        cout << "-------------Jogo muito divertido-------------" << endl;
         cout << "1 - Adicionar jogador" << endl;
         cout << "2 - Iniciar partida" << endl;
 
@@ -144,10 +154,7 @@ int main(int argc, char const *argv[])
                 cin >> aux_2;
                 system("CLS");
                 jogo.set_num_jogo(aux_2);
-
                 endGame = game(jogo);
-                cout << endGame;
-                cin.get();
             }
             else
             {
