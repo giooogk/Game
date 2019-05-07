@@ -1,3 +1,17 @@
+/**
+ * @file main.cpp
+ * @author Frankleiton Levy (frankleiton@gmail.com) e Giovanna Karla (macedo1999.gk@gmail.com)
+ *
+ * @brief  Projeto de um jogo que vai até N 
+ * @version 2.4
+ *
+ * since 23-04-2019
+ * @date 07-05-2019
+ *
+ * @sa Materiais disponiveis no SIGAA da matéria de LP-I
+ * 
+ */
+
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -7,12 +21,21 @@
 #include "jogo.h"
 
 using namespace std;
-
+/**
+ * @brief Dado que utilizamos para o jogo 
+ * 
+ * @return int 
+ */
 int jogarDado()
 {
     return 1 + (rand() % 6);
 }
-
+/**
+ * @brief função que inicia o jogo
+ * 
+ * @param jogo 
+ * @return int 
+ */
 int game(Jogo jogo)
 {
 
@@ -39,7 +62,10 @@ int game(Jogo jogo)
 
             cin >> aux_jogo;
 
-            /* REGRAS */
+            /**
+             * @brief Condições que condiz com as regras do jogo 
+             * 
+             */
             if (aux_jogo == 1)
             {
                 system("CLS");
@@ -80,7 +106,10 @@ int game(Jogo jogo)
 
         if (jogo.get_gamers().size() == 1 && it_temp->second.get_pontos() <= jogo.get_num_jogo())
         {
-            system("CLS");
+            if (system("clear") != 0)
+            {
+                system("CLS");
+            }
             cout << "Jogador "<< it_temp->second.get_pessoa() <<" Ganhou a partida!" << endl;
             win = 5;
         }
@@ -96,7 +125,10 @@ int game(Jogo jogo)
                 }
             }
             win = 5;
-            system("CLS");
+            if (system("clear") != 0)
+            {
+                system("CLS");
+            }
 
             if (J->get_pessoa().empty())
             {
@@ -126,7 +158,10 @@ int main(int argc, char const *argv[])
 
     int op = 0;
     string aux = "";
-
+    /**
+     * @brief Menu do jogo
+     * 
+     */
     while (endGame == 1)
     {
         cout << "-------------Jogo muito divertido-------------" << endl;
@@ -144,7 +179,10 @@ int main(int argc, char const *argv[])
             cara->set_pessoa(aux);
             cara->set_pontos(0);
             jogo.adc_jogad_no_jogo(*cara);
-            system("CLS");
+            if (system("clear") != 0)
+            {
+                system("CLS");
+            }
             break;
 
         case 2:
@@ -152,7 +190,10 @@ int main(int argc, char const *argv[])
             {
                 cout << "Digite target(N) do jogo: " << endl;
                 cin >> aux_2;
-                system("CLS");
+                if (system("clear") != 0)
+                {
+                    system("CLS");
+                }
                 jogo.set_num_jogo(aux_2);
 
                 endGame = game(jogo);
